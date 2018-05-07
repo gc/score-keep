@@ -7,18 +7,18 @@ import { Players, calculatePlayerPositions } from "./../imports/api/players";
 import App from "./../imports/ui/App";
 
 Meteor.startup(() => {
-  Tracker.autorun(() => {
-    let players = Players.find(
-      {},
-      {
-        sort: {
-          score: -1
-        }
-      }
-    ).fetch();
-    let positionedPlayer = calculatePlayerPositions(players);
-    let title = "Score Keep";
-    ReactDOM.render(<App title={title} players={positionedPlayer} subtitle="Created by Garrick Chippendale" />, document.getElementById("app"));
-    console.log("Players List", Players.find().fetch());
-  });
+    Tracker.autorun(() => {
+        let players = Players.find(
+            {},
+            {
+                sort: {
+                    score: -1
+                }
+            }
+        ).fetch();
+        let positionedPlayer = calculatePlayerPositions(players);
+        let title = "Score Keep";
+        ReactDOM.render(<App title={title} players={positionedPlayer} subtitle="Score Keeping Application" />, document.getElementById("app"));
+        console.log("Players List", Players.find().fetch());
+    });
 });
